@@ -12,7 +12,3 @@ class Flight(BaseModel):
     flight_num: str
     capacity: int
     estimated_flight_duration: int
-
-
-class Airline(BaseModel):
-    flights: list[Flight]
