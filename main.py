@@ -41,18 +41,22 @@ async def get_flight(airline_name: AirlineName, flight_num: str) -> Flight:
 
 # POST /:airline 
 @app.post("/{airline}")
-async def create_flight(airline_name: AirlineName, flight: Flight) -> None:
+async def create_flight(airline_name: AirlineName, flight: Flight) -> str:
     flights[airline_name].append(flight)
+    return "Flight created."
 
 
 # PUT /:airline/:flight_num
 @app.put("/{airline}/{flight_num}")
-async def update_flight(airline_name: AirlineName, flight_num: str, updated_flight: Flight) -> None:
+async def update_flight(airline_name: AirlineName, flight_num: str, updated_flight: Flight) -> str:
     for flight in flights[AirlineName(airline_name)]:
         if flight.flight_num == flight_num:
             flight.capacity = updated_flight.capacity
             flight.estimated_flight_duration = updated_flight.estimated_flight_duration
+            return "Flight updated."
     
+    flights[airline_name].append(updated_flight)
+    return "Flight created."
 
 # DELETE /:airline/:flight_num
 @app.delete("/{airline}/{flight_num}")
