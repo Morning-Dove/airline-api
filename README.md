@@ -28,6 +28,6 @@ Name                            | Method | Path
 Retrieve airline_name collection| GET    | /
 Retrieve flight_num collection  | GET    | /:airline_name
 Retrieve flight member          | GET    | /:airline_name/:flight_num
-Create flight member            | POST   | /:airline_name
-Update flight member            | PUT    | /:airline_name/:flight_num
-Delete flight member            | DELETE | /:airline_name/:flight_num
+Create flight member            | POST   | /:airline
+Update flight member            | PUT    | /:airline/:flight_num
+Delete flight member            | DELETE | /:airline/:flight_num
